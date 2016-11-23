@@ -4,6 +4,7 @@ namespace Modules\FBOverlay\Pages;
 
 use Lightning\Tools\ClientUser;
 use Lightning\Tools\Configuration;
+use Lightning\Tools\Form;
 use Lightning\Tools\Navigation;
 use Lightning\Tools\Request;
 use Lightning\Tools\SocialDrivers\Facebook;
@@ -18,6 +19,7 @@ class Overlay extends Page {
 
     public function get() {
         // Load a list of images to show.
+        Form::requiresToken();
         Template::getInstance()->set('overlays', Configuration::get('modules.FBOverlay.overlays'));
 
         $user = ClientUser::getInstance();
